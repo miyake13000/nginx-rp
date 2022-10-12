@@ -6,8 +6,8 @@ After=docker.service
 [Service]
 # Change WorkingDirectory to suit your environment
 WorkingDirectory = /path/to/this/repository
-ExecStart=/path/to/this/repository/dnsmasq-docker.sh start -p 53
-ExecStop=/path/to/this/repository/dnsmasq-docker.sh stop
+ExecStart=/path/to/this/repository/launch.sh start
+ExecStop=/path/to/this/repository/launch.sh stop
 
 # Change User
 User=nginx-rp
