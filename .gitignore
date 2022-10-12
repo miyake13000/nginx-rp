@@ -1,0 +1,5 @@
+conf/*
+!conf/example_com.conf.sample
+
+log/*
+!log/.keep

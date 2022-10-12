@@ -1,0 +1,19 @@
+[Unit]
+Description=Reverse Proxy Server by nginx
+Requires=docker.service
+After=docker.service
+
+[Service]
+# Change WorkingDirectory to suit your environment
+WorkingDirectory = /path/to/this/repository
+ExecStart=/path/to/this/repository/dnsmasq-docker.sh start -p 53
+ExecStop=/path/to/this/repository/dnsmasq-docker.sh stop
+
+# Change User
+User=nginx-rp
+
+Type=simple
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
