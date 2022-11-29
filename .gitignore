@@ -3,3 +3,6 @@ conf/*
 
 log/*
 !log/.keep
+
+ssl/*
+!ssl/.keep
