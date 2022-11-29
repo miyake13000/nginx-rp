@@ -124,6 +124,7 @@ function start(){
         -p $DEFAULT_HTTPS_PORT:443 \
         -v $PWD/conf:/etc/nginx/conf.d \
         -v $PWD/log:/var/log/nginx/ \
+        -v $PWD/ssl:/etc/nginx/ssl \
         --rm \
         --name $CONTAINER_NAME \
         $IMAGE_NAME $COMMAND
