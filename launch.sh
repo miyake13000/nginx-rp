@@ -125,7 +125,7 @@ function start(){
         -v $PWD/conf:/etc/nginx/conf.d \
         -v $PWD/log:/var/log/nginx/ \
         -v $PWD/ssl:/etc/nginx/ssl \
-        -v $PWD/tmp:/webroot \
+        -v $PWD/tmp:/webroot/.well-known/acme-challenge \
         --rm \
         --name $CONTAINER_NAME \
         $IMAGE_NAME $COMMAND
