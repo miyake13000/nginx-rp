@@ -3,7 +3,12 @@ server{
         server_name example.com;
         access_log /var/log/nginx/example_access.log;
         error_log /var/log/nginx/example_error.log;
-        return 301 https://$host$request_uri;
+        location /.well-known/acme-challenge/ {
+                root /webroot/
+        }
+        location / {
+                return 301 https://$host$request_uri;
+        }
 }
 
 server{
