@@ -72,4 +72,4 @@ docker run -it --rm \
   --name nginx-rp-certbot \
   -v "$CERT_FILE_LOCATION":/etc/letsencrypt \
   -v "$WEBROOT_LOCATION":/webroot/.well-known/acme-challenge \
-  certbot/certbot certonly --webroot -w /webroot -d "$DOMAINS" -m "$MAIL_ADDR" --agree-tos --non-interactive --dry-run
+  certbot/certbot certonly --webroot -w /webroot -d "$DOMAINS" -m "$MAIL_ADDR" --agree-tos --non-interactive
