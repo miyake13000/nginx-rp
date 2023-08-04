@@ -30,7 +30,7 @@ while getopts "hd:m:-:" OPT; do
     -)
       case "${OPTARG}" in
         domains-from-config)
-          DOMAINS=$(grep server_name conf/*.conf | awk '{print $NF}' | uniq | sed s/\;// | paste -s -d ',')
+          DOMAINS=$(grep server_name conf/*.conf | awk '{print $NF}' | uniq | sed s/\;// | paste -s -d ' ')
           if [ -z "$DOMAINS" ]; then
             echo "conf/*.conf has no server_name"
             exit 1
@@ -68,8 +68,11 @@ fi
 
 docker pull certbot/certbot:latest > /dev/null
 
-docker run -it --rm \
-  --name nginx-rp-certbot \
-  -v "$CERT_FILE_LOCATION":/etc/letsencrypt \
-  -v "$WEBROOT_LOCATION":/webroot/.well-known/acme-challenge \
-  certbot/certbot certonly --webroot -w /webroot -d "$DOMAINS" -m "$MAIL_ADDR" --agree-tos --non-interactive
+for DOMAIN in $DOMAINS
+do
+  docker run -it --rm \
+    --name nginx-rp-certbot \
+    -v "$CERT_FILE_LOCATION":/etc/letsencrypt \
+    -v "$WEBROOT_LOCATION":/webroot/.well-known/acme-challenge \
+    certbot/certbot certonly --webroot -w /webroot -d "$DOMAIN" -m "$MAIL_ADDR" --agree-tos --non-interactive
+done
