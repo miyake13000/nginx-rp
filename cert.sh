@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd "$(dirname "$0")"
+
 CERT_FILE_LOCATION=$PWD/ssl
 WEBROOT_LOCATION=$PWD/tmp
 
