@@ -16,7 +16,7 @@ server{
         server_name example.com;
         access_log /var/log/nginx/example_access.log;
         error_log /var/log/nginx/example_error.log;
-        ssl_certificate /etc/nginx/ssl/live/example.com/cert.pem;
+        ssl_certificate /etc/nginx/ssl/live/example.com/fullchain.pem;
         ssl_certificate_key /etc/nginx/ssl/live/example.com/privkey.pem;
         ssl_protocols TLSv1.2 TLSv1.3;
         location / {
